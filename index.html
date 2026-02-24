@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birthday Surprise 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+}
+
+h1 {
+  color: white;
+  margin-top: 30px;
+}
+
+img {
+  width: 90%;
+  max-width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  display: none;
+  margin-top: 20px;
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  background-color: white;
+  color: #ff4b7d;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ffe6ec;
+}
+
+.secretBtn {
+  display: none;
+  background-color: red;
+  color: white;
+}
+
+.message {
+  color: white;
+  margin-top: 20px;
+  display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Click for Surprise 💖</h1>
+
+<img src="photo1.jpg" class="photos">
+<img src="photo2.jpg" class="photos">
+<img src="photo3.jpg" class="photos">
+
+<br>
+<button onclick="showNext()">Next 💕</button>
+
+<br>
+<button class="secretBtn" id="secretButton" onclick="playVoice()">🎁 Click for Secret Message</button>
+
+<div class="message" id="finalMessage">
+  Happy Birthday My Love 🎂❤️ <br>
+  You are my everything 💕
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" src="song.mp3"></audio>
+
+<!-- Hidden Voice -->
+<audio id="voiceMessage" src="voice.mp3"></audio>
+
+<script>
+
+let current = 0;
+let photos = document.getElementsByClassName("photos");
+let musicStarted = false;
+
+function showNext() {
+
+  if (!musicStarted) {
+    document.getElementById("bgMusic").play();
+    musicStarted = true;
+  }
+
+  if (current < photos.length) {
+    photos[current].style.display = "block";
+    current++;
+  } else {
+    document.getElementById("finalMessage").style.display = "block";
+    document.getElementById("secretButton").style.display = "inline-block";
+  }
+}
+
+function playVoice() {
+  document.getElementById("voiceMessage").play();
+}
+
+</script>
+
+</body>
+</html>
